@@ -1,10 +1,25 @@
 <?php
 var_dump($_GET);
-var_dump(isset($_GET['email']));
+$mail_true = isset($_GET['email']);
 
 $user_email = ($_GET['email']);
 
+if ($mail_true) {
+    echo('there is mail');
+    if(filter_var($user_email, FILTER_VALIDATE_EMAIL)){
+        var_dump($user_email);
+        echo('it is a valid email');
+        $email_response = true;
+        $successo_fallimento = 'Successo';
+    }else {
+        echo('it is not a valid email');
+        $email_response = false;
+        $successo_fallimento = 'Fallimento';
 
+    }
+}
+
+#FUNZIONI
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +39,14 @@ $user_email = ($_GET['email']);
                     <input type="text" placeholder="example@mail.com" name="email" id="email">
                     <button type="submit" class="btn btn-primary">Subscribe</button>
                 </form>
+                <!-- alert when set email -->
+                <?php if (isset($email_response)) : ?>
+                <div class="alert alert-primary width100" role="alert">
+                    <strong>
+                        <?=$successo_fallimento; ?>
+                    </strong>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
