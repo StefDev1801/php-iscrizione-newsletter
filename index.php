@@ -1,4 +1,10 @@
 <?php
+var_dump($_GET);
+var_dump(isset($_GET['email']));
+
+$user_email = ($_GET['email']);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +16,16 @@
     <title>Newsletter</title>
 </head>
 <body>
-    
+    <section>
+        <div class="newsletter my-3">
+            <div class="container text-center">
+                <div>Subscribe to our newsletter</div>
+                <form action="" method="get">
+                    <input type="text" placeholder="example@mail.com" name="email" id="email">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
